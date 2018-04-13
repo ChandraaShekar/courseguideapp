@@ -8,6 +8,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="icon" href="images/logo.png" sizes="16x16" type="image/png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!--  FONTS  -->
 	<!-- <link rel="stylesheet" href="css/font-awesome.min.css"> -->
@@ -116,16 +117,16 @@ li a:hover{
                 <li class="dropdown">
                   <a class="dropdown-toggle" data-toggle="dropdown" href="#">SEARCH<span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="byinterest.php">BASED ON INTEREST</a></li>
+                    <li><a href="by-interest.php">BASED ON INTEREST</a></li>
                     <li><a href="location-search.php">BASED ON LOCATION</a></li>
-                    <li><a href="byclg_name.php">BASED ON COLLEGE NAME</a></li>
-                  </ul>
+                    <li><a href="college-name.php">BASED ON COLLEGE NAME</a></li>
+                </ul>
                 </li>
+                  <li><a href="campus-consul.php">BE A CAMPUS CONSUL</a></li>
                 <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">EXTRAS<span class="caret"></span></a>
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">OTHERS<span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     <li><a href="add-your-business.php">ADD YOUR BUSINESS</a></li>
-                    <li><a href="#">BECOME A CAMPUS CONSUL</a></li>
                   </ul>
                 </li>
               </ul>
