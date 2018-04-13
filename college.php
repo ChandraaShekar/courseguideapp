@@ -2,9 +2,11 @@
 session_start();
 require_once 'php/db.php';
 if (isset($_SESSION['user'])) {
+    $user_id  = $_SESSION['user']['id'];
     $fullname = $_SESSION['user']['name'];
     $username = $_SESSION['user']['username'];
     include "includes/after_login.php";
+    // print_r($_SESSION['user']);
 }else{
     include "includes/header.php";
 }
@@ -24,6 +26,24 @@ if (isset($_GET['id'])) {
 	body,p{
 		color: #000;
 	}
+	.slider {
+		-webkit-appearance: none;
+		width: 350px;
+		height: 25px;
+		background: #d3d3d3;
+		outline: none;
+		opacity: 0.7;
+		-webkit-transition: .2s;
+		transition: opacity .2s;
+	}
+	.slider::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		appearance: none;
+		width: 25px;
+		height: 25px;
+		background: #4CAF50;
+		cursor: pointer;
+}
     </style>
     <script>
     $(document).ready(function(){
@@ -58,11 +78,13 @@ if (isset($_GET['id'])) {
     <a class="nav-link" href="?id=<?php echo($tab_id); ?>&page=courses"">Courses Info</a>
   </li>
   <?php }  ?>
+ <li class="nav-item">
+    <a class="nav-link" href="?id=<?php echo($tab_id); ?>&page=comments"">Comments</a>
+  </li>
 </ul>
 <?php
 if (isset($_GET['page'])) {
 	if ($_GET['page'] == "home") {
-		// echo "Home";
 		?>
 		<h2>Basic Info</h2>
     <table class="table table-hover">
@@ -453,6 +475,39 @@ if (isset($_GET['page'])) {
 			</tr>
 			<?php
 		}
+	}elseif ($_GET['page'] = "comments") {
+		?>
+		<div class="jumbotron">
+			<?php
+			if(isset($_SESSION['user'])){
+				$q5 = $db->query("SELECT * FROM comments WHERE college_id = '".$tab_id."'");
+				if (mysqli_num_rows($q5) == 0) {
+					?>
+					<h1>Be the first person to write a comment...</h1>
+					<?php
+				}
+			}else{
+				?>
+				<h1>You need to login to Write or See the comments</h1>
+				<?php
+			}
+			?>
+		</div>
+		<form method="post">
+			<input type="range" min="1" max="5" value="3" class="slider form-control" id="myRange">
+			<h3 class="text-danger">Your Rating: <span id="op"></span></h3>
+			<textarea class="form-control" name="comment-msg" placeholder="Enter your message here..." rows="3"></textarea>
+			<button name="submit" class="btn btn-primary">Submit</button>
+			<script>
+				var slider = document.getElementById("myRange");
+				var output = document.getElementById("op");
+				output.innerHTML = slider.value;
+				slider.oninput = function() {
+					output.innerHTML = this.value;
+				}
+			</script>
+		</form>
+		<?php
 	}
 	else{
 		header("Location: http://localhost/cg/site/CourseGuide/college.php?id=". $tab_id ."&page=home");

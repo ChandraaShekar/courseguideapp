@@ -1,9 +1,6 @@
 <?php
-echo "<h1>Chandu</h1>";
 session_start();
 if (isset($_SESSION['user'])) {
-   	 $app_name = null;
-   	 $controller = null;
 	$fullname = $_SESSION['user']['name'];
 	$username = $_SESSION['user']['username'];
 	include 'includes/after_login.php';
@@ -20,12 +17,13 @@ if (isset($_SESSION['user'])) {
 }
 // include "includes/header.php";
 ?>
+	<link href="css/prettyPhoto.css" rel="stylesheet" />
 <style type="text/css">
 	#myModal{
 		height: 100%;
 		width: 100%;
 	}
-</style>
+</style><br>
 	<div class="slider">
 		<div class="img-responsive">
 			<ul class="bxslider">
@@ -60,17 +58,7 @@ if (isset($_SESSION['user'])) {
                 </a>
             </div>
         </div>
-        <div class="col-sm-3">
-            <div class="card wow fadeInLeft" data-wow-offset="0">
-               <a href="bybranch.php">
-                <div class="card-block">
-                   <i class="fa fa-cogs fa-3x"></i>
-                    <h4 class="card-title">Based on Branch</h4>
-                    <p>Get to know every detail of a branch, from the future scopes and job aspect to availability in colleges.</p>
-                </div>
-                </a>
-            </div>
-        </div>
+       
         <div class="col-sm-3">
             <div class="card wow fadeInLeft" data-wow-offset="0">
                <a href="basedonlocation.php">
@@ -92,7 +80,18 @@ if (isset($_SESSION['user'])) {
                 </div>
                 </a>
             </div>
-		</div>
+       </div>
+        <div class="col-sm-3">
+            <div class="card wow fadeInLeft" data-wow-offset="0">
+               <a href="bybranch.php">
+                <div class="card-block">
+                   <i class="fa fa-cogs fa-3x"></i>
+                    <h4 class="card-title">Be a Campus Consul</h4>
+                    <p>Get to know every detail of a branch, from the future scopes and job aspect to availability in colleges.</p>
+                </div>
+                </a>
+            </div>
+        </div>
 	</div>
  </div>
 
@@ -150,7 +149,7 @@ if (isset($_SESSION['user'])) {
 					<ul style="color:white">
 						<li><i class="fa fa-envelope fa-2x"></i> courseguide@gmail.com</li>
 						<br>
-						<li><a href="index.html"><img src="images/logo.png" alt=""></a></li>
+						<li><a href="index.html"><img src="images/logo4.png" alt=""></a></li>
 					</ul>
 				</div>
 

@@ -16,17 +16,21 @@ echo "<link rel=\"stylesheet\" href=\"css/jquery.tag-editor.css\">";
         color: #000;
     }
 </style>
-<div class="container">
-    <div class="header" style="margin:0px auto;font-family: 'Varela Round', sans-serif;">We use advance methods and techniques to find tailored course, we compare 1000's of colleges to give you the best result based on your interest. <br> Enter your Interests in the below input field and get the tailored course!
+<?php
+if (isset($_SESSION['search-int'])) {
+    $search_int = $_SESSION['search-int'];
+}else{
+    $search_int = null;
+}
+?>
+    <div class="header container">
+        <h1>By Interests</h1>
+        We use advance methods and techniques to find tailored course, we compare 1000's of colleges to give you the best result based on your interest. 
+        <br> Enter your Interests in the below input field and get the tailored course!
     </div>
     <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <center><p class="">Press Enter after entering each interest</p></center>
-<form method="post">
-    <textarea id="demo1" name="interesttag"></textarea>
+<form method="post">    
+    <textarea id="demo1" name="interesttag" class="form-control" value=<?php echo "\"". $search_int ."\""; ?>></textarea>
 <button type="submit" class="button button2" name="submit">Search</button>
 </form>
     

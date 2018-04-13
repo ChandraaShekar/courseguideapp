@@ -18,20 +18,24 @@ if (isset($_SESSION['user'])) {
     $(document).ready(function(){
         $('#filterfield').keyup(function(){
         var data = $(this).val();
-           $.get('php/college-list-location.php',{data:data},function(value){
+           $.get('php/college-list.php',{data:data},function(value){
             $('#tab').html(value).show(slow);
         }); 
         });
     });
     </script>
 <div class="header container">
-<h1>Search By location</h1>
-Find the best college for you in your <span class="text-danger">location</span> easily, and find the required information of all the colleges in that area.</div>
+<h1 style="color: #000;">Search By College Name</h1>
+Find the best college for you in a giving area easily, and find the required information of all the colleges in that area.</div>
 <div class="search container">
-   <form method="post">
-                <input type="text" id="filterfield" name="search" class="form-control inputs" placeholder="Search By Location..." autocomplete="off" />
+   <form>
+  <!-- <input type="text" name="search" class="form-control" placeholder="Search By Location..."> -->
+                <input type="text" id="filterfield" name="search" class="form-control inputs" placeholder="Enter a college name..." autocomplete="off" />
+                <br><hr>
                 <div id="tab">
+                    
                 </div>
+<!-- <button class="button btn btn-primary" name="submit">Search</button> -->
 </form>
 
 </div>

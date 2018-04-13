@@ -15,14 +15,21 @@ echo "<link rel=\"stylesheet\" href=\"css/jquery.tag-editor.css\">";
         color: #000;
     }
 </style>
-
-<body>
-    <div class="header container" style="margin:0px auto;font-family: 'Varela Round', sans-serif;">We use advance methods and techniques to find tailored course, we compare 1000's of colleges to give you the best result based on your interest. <br> Enter your Interests in the below input field and get the tailored course!
+<?php
+if (isset($_SESSION['search-int'])) {
+    $search_int = $_SESSION['search-int'];
+}else{
+    $search_int = null;
+}
+?>
+    <div class="dropdown-header container">
+        <h1>Search By Interests</h1>
+        We use advance methods and techniques to find tailored course, we compare 1000's of colleges to give you the best result based on your interest. 
+        <br> Enter your Interests in the below input field and get the tailored course!
     </div>
     <br>
-<form method="post" class="container" action="by-interest.php">
-    <br><p class="text-success">Press Enter after entering each interest</p>
-    <textarea id="demo1" name="interesttag" class="form-control"></textarea>
+<form method="post" class="container">
+    <textarea id="demo1" name="interesttag" class="form-control" value=<?php echo "\"". $search_int ."\""; ?>></textarea>
 <button type="submit" class="btn btn-primary" name="submit">Search</button>
 </form>
     
@@ -33,10 +40,11 @@ echo "<link rel=\"stylesheet\" href=\"css/jquery.tag-editor.css\">";
 if (isset($_POST['submit'])) {
     $tags = $_POST['interesttag'];
     $str = str_replace(",", " ", $tags);
+    $_SESSION['search-int'] = $tags;
     $q = $db->query("SELECT * FROM courses_information WHERE match(course_name, course_list) against('$str') ") or die(mysqli_error($db));
     // echo mysqli_num_rows($q);
     while ($row = $q->fetch_assoc()) {
-        // echo "<a href=\"byinterest.php?course=$row['id'] \">$row['course_name']</a>";
+
         ?>
         <a href=by-interest.php?course=<?php echo $row['id']; ?> class="btn btn-link"><?php echo $row['course_name'];  ?></a>
         <?php
